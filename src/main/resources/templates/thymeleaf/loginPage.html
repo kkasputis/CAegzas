@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title>Prisijungti</title>
+   </head>
+   <body>
+
+
+
+
+<div class="webtitle">
+Restorano meniu
+</div>
+
+<div class="topmenu2">
+<a href="../" class="menubutton">Pradzia</a>
+<a href="../login" class="menubutton">Prisijungti</a>
+</div>
+   <div style="text-align:center; position: absolute; left: 40%;">
+      <h1>Prisijungti</h1>
+       
+      <!-- /login?error=true -->
+      <div th:if="${#request.getParameter('error') == 'true'}"
+            style="color:red;margin:10px 0px;">
+         Prisijungti nepavyko!!!<br />
+         Priežastis :
+         <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+            th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                Static summary
+         </span>
+            
+      </div>
+      
+      <h3>Įveskite vartotojo vardą ir slaptažodį:</h3>
+      <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+         <table>
+            <tr>
+               <td>Vartotojo vardas:</td>
+               <td><input class="komentaroinput" type='text' name='username' value=''></td>
+            </tr>
+            <tr>
+               <td>Slaptažodis:</td>
+               <td><input class="komentaroinput" type='password' name='password' /></td>
+            </tr>
+            <tr>
+               <td>Atsiminti?</td>
+               <td><input type="checkbox" name="remember-me" /></td>
+            </tr>            
+           
+       
+           
+         </table>
+                 <input class="menubutton" name="submit" type="submit" value="Prisijungti" style="margin-left:10%;"/>
+      </form>
+       
+      <br>
+      <a class="usermenubutton" href="../newuser">Sukurti naują vartotoją</a>
+
+     </div>  
+   </body>
+     <style>
+ .userimage {
+
+    height: 45px;
+    width: 45px;
+	margin-right: 3px;
+	margin-bottom: 6px;
+    border-radius: 50px;
+    overflow:hidden;
+    object-fit:cover;
+
+}
+.usermenubutton:hover {
+ background-color: #737373;
+   color: #E8E8E8;
+}
+.usermenubutton {
+ background-color: #E8E8E8; 
+  border: none;
+  color: black;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  margin-left: 10%;
+}
+.menubutton {
+ background-color: #E8E8E8; 
+  border: none;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-bottom: 6px;
+}
+.menubutton:hover {
+ background-color: #737373;
+   color: #E8E8E8;
+}
+.webtitle {
+margin-bottom: 5px;
+margin-top: 10px;
+text-align: center;
+font-size: 40px;
+
+}
+.topmenu {
+border-style: inset;
+border-radius: 5px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+.topmenu2 {
+border-style: inset;
+border-radius: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.komentaroinput {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+
+}
+ </style> 
+</html>
